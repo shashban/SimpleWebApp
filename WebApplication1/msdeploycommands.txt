@@ -1,0 +1,24 @@
+﻿To Azure
+Get values from PublishSettingsFile
+
+C:\Program Files\IIS\Microsoft Web Deploy V3>msdeploy.exe -source:package="C:\Users\shashban\Documents\Visual Studio 2015\WebSites\WebSite1\WebSite1.zip" -dest:auto,computerName='https://rmpmtestsamplewebapp1.scm.azurewebsites.net:443/msdeploy.axd?site=rmpmtestsamplewebapp1',username='$rmpmtestsamplewebapp1',password='KS4Wl2pKpm59CBi4b6YxaMs26Skb12yz1AvPdczva9CL0dDvM9zFd6lnYcj6',authtype='Basic',includeAcls='False' -verb:sync -setParam:name="IIS Web Application Name",value="rmpmtestsamplewebapp1"
+Info: Using ID 'c0f3f006-e56a-46fd-8483-7d018e8769d4' for connections to the remote server.
+Info: Deleting file (rmpmtestsamplewebapp1\hostingstart.html).
+Info: Adding ACL's for path (rmpmtestsamplewebapp1)
+Info: Adding ACL's for path (rmpmtestsamplewebapp1)
+Info: Using ID '1eb31c21-a095-4772-bb61-9aae9652bac3' for connections to the remote server.
+Info: Adding file (rmpmtestsamplewebapp1\Index.html).
+Info: Adding file (rmpmtestsamplewebapp1\PrecompiledApp.config).
+Info: Adding file (rmpmtestsamplewebapp1\Web.config).
+Info: Adding ACL's for path (rmpmtestsamplewebapp1)
+Info: Adding ACL's for path (rmpmtestsamplewebapp1)
+Total changes: 8 (3 added, 1 deleted, 4 updated, 0 parameters changed, 573 bytes copied)
+
+To a local IIS Machine 
+- C:\Users\shashban\Documents\Visual Studio 2015\WebSites\WebSite1>msdeploy.exe -verb=sync -source:package="WebSite1.zip" -dest:auto -allowUntrusted=true
+- It would fail the first time
+- Goto inetmgr, edit permissions on the new virtual directory, reorder and finish (http://stackoverflow.com/questions/32648654/publishing-website-error-this-access-control-list-is-not-in-canonical-form-and)
+- Rerunning the command would pass
+
+Browse to http://localhost/website_deploy
+
